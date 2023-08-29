@@ -20,13 +20,13 @@ def onDisconnect(dat):
 # 
 # Only text frame messages will be handled in this function.
 
-def onReceiveText(dat, rowIndex, message):
+def onReceiveText(dat, rowIndex, message):  #skript aufruf bei eingehender websocket message
 	if message == 'ping':
 		dat.sendText('pong')
 		return
 	data = json.loads(message)
 	for key, val in data.items():
-		mod('table_modifier').insertVal(key, val)
+		mod('table_modifier').insertVal(key, val) #table_modifier skript wird aufgerufen (im repository unter table_modifier hinterlegt)
 		# write the key values into a table
 		print(key, val)
 	return
